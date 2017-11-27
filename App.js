@@ -4,10 +4,12 @@ import { View, Text, TouchableHighlight, NavigatorIOS } from 'react-native';
 
 import Basic from './animated/basic';
 import Press from './animated/press';
+import Drag from './animated/drag';
 
 const SCREENS = [
   { component: Basic, title: 'Basic', passProps: {} },
   { component: Press, title: 'Press', passProps: {} },
+  { component: Drag, title: 'Drag', passProps: {} },
 ];
 
 class MainScreen extends Component {
