@@ -1,57 +1,45 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { View, Text, TouchableHighlight, NavigatorIOS } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import Basic from './animated/basic';
 
-export default class App extends Component<{}> {
+const SCREENS = [
+  { component: Basic, title: 'Basic', passProps: {} },
+];
+
+class MainScreen extends Component {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+
+  renderButtons = () => {
+    return SCREENS.map((screen, key) => (
+      <TouchableHighlight key={key} onPress={() => this.props.navigator.push(screen)}>
+        <Text style={{ fontSize: 20, lineHeight: 30 }}>{screen.title}</Text>
+      </TouchableHighlight>
+    ));
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+    const style = {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    };
+
+    return <View style={style}>{this.renderButtons()}</View>;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default class App extends Component {
+  render() {
+    const initialRoute = {
+      component: MainScreen,
+      title: 'Main screen',
+      passProps: {},
+    };
+
+    return <NavigatorIOS initialRoute={initialRoute} style={{ flex: 1 }} />;
+  }
+}
