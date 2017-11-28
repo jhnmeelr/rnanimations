@@ -9,6 +9,7 @@ import Colors from './animated/colors';
 import Rotation from './animated/rotation';
 import Sequence from './animated/sequence';
 import Stagger from './animated/stagger';
+import Multiple from './animated/multiple';
 
 const SCREENS = [
   { component: Basic, title: 'Basic', passProps: {} },
@@ -18,6 +19,7 @@ const SCREENS = [
   { component: Rotation, title: 'Rotation', passProps: {} },
   { component: Sequence, title: 'Sequence', passProps: {} },
   { component: Stagger, title: 'Stagger', passProps: {} },
+  { component: Multiple, title: 'Multiple', passProps: {} },
 ];
 
 class MainScreen extends Component {

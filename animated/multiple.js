@@ -2,27 +2,20 @@ import React, { Component } from 'react';
 
 import { View, StyleSheet, Animated } from 'react-native';
 
-export default class Sequence extends Component {
+export default class Multiple extends Component {
   componentWillMount() {
     this.animatedValue1 = new Animated.Value(0);
     this.animatedValue2 = new Animated.Value(1);
   }
 
   componentDidMount() {
-    Animated.sequence([
+    Animated.parallel([
       Animated.timing(this.animatedValue1, {
-        toValue: 150,
-        duration: 1000,
+        toValue: 500,
+        duration: 1000
       }),
       Animated.spring(this.animatedValue2, {
         toValue: 3,
-      }),
-      Animated.timing(this.animatedValue1, {
-        toValue: 0,
-        duration: 1000,
-      }),
-      Animated.spring(this.animatedValue2, {
-        toValue: 0.5,
       }),
     ]).start();
   }
@@ -46,8 +39,8 @@ export default class Sequence extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row'
   },
   box: {
     backgroundColor: '#333',
