@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 
-import { View, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 
-export default class Colors extends Component {
+export default class Rotation extends Component {
   componentWillMount() {
     this.animatedValue = new Animated.Value(0);
   }
 
   componentDidMount() {
     Animated.timing(this.animatedValue, {
-      toValue: 150,
+      toValue: 1,
       duration: 1500,
     }).start();
   }
 
   render() {
-    const interpolateColor = this.animatedValue.interpolate({
-      inputRange: [0, 150],
-      outputRange: ['rgb(0,0,0)', 'rgb(51,250,170)']
+    const interpolateRotation = this.animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg']
     });
     const animatedStyle = {
-      backgroundColor: interpolateColor,
       transform: [
-        { translateY: this.animatedValue }
+        { rotate: interpolateRotation }
       ]
     };
 
     return (
       <View style={styles.container}>
-        <Animated.View style={[styles.box, animatedStyle]} />
+        <Animated.View style={[styles.box, animatedStyle]}>
+          <Text style={styles.text}>Spinner</Text>
+        </Animated.View>
       </View>
     );
   }
@@ -44,5 +45,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     width: 100,
     height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  text: {
+    color: '#fff'
+  }
 });
