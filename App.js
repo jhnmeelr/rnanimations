@@ -8,6 +8,7 @@ import Drag from './animated/drag';
 import Colors from './animated/colors';
 import Rotation from './animated/rotation';
 import Sequence from './animated/sequence';
+import Stagger from './animated/stagger';
 
 const SCREENS = [
   { component: Basic, title: 'Basic', passProps: {} },
@@ -16,6 +17,7 @@ const SCREENS = [
   { component: Colors, title: 'Colors', passProps: {} },
   { component: Rotation, title: 'Rotation', passProps: {} },
   { component: Sequence, title: 'Sequence', passProps: {} },
+  { component: Stagger, title: 'Stagger', passProps: {} },
 ];
 
 class MainScreen extends Component {
