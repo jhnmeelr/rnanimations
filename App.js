@@ -10,6 +10,7 @@ import Rotation from './animated/rotation';
 import Sequence from './animated/sequence';
 import Stagger from './animated/stagger';
 import Multiple from './animated/multiple';
+import Flip from './animated/flip';
 
 const SCREENS = [
   { component: Basic, title: 'Basic', passProps: {} },
@@ -20,6 +21,7 @@ const SCREENS = [
   { component: Sequence, title: 'Sequence', passProps: {} },
   { component: Stagger, title: 'Stagger', passProps: {} },
   { component: Multiple, title: 'Multiple', passProps: {} },
+  { component: Flip, title: 'Flip', passProps: {} },
 ];
 
 class MainScreen extends Component {
